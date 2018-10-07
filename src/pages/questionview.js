@@ -1,37 +1,41 @@
 import React, { Component } from 'react';
 import QuestionList from '../components/questionlist';
 import Description from '../components/description';
-import database from '../dummy/db.json'
+import database from '../dummy/db.json';
+import updateQuestions from '../utils/updateQuestions';
+
 
 export default class QuestionView extends Component {
   constructor(props) {
     super(props)
   
     this.state = {
-       questionsData: [],
-       keypress: ""
+       questions: []
     }
   }
   
 
   componentDidMount = () => {
     this.setState({
-      questionsData: database.questions
+      questions: database.questions
     })
   }
 
-  handleKeyPress = (event) => {
-    this.setState({
-      keypress: event.target.value
-    })
+  handleKeyPress = (id) => (event) => {
+    const value = event.target.value
+
+    const upd = updateQuestions(this.state, id, value);
+    console.log(upd);
+    console.log(value)
   }
   
   render() {
-    const { questionsData } = this.state
+    const { questions } = this.state;
+    console.log(this.state)
     return (
       <div>
         <Description />
-        <QuestionList questions={questionsData} handleKeyPress={this.handleKeyPress}/>
+        <QuestionList questions={questions} handleKeyPress={this.handleKeyPress}/>
       </div>
     )
   }
