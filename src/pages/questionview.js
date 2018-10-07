@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import List from '../components/list';
+import QuestionList from '../components/questionlist';
 import Description from '../components/description';
+import data from '../dummy/db.json'
 
 
-export default class Questionview extends Component {
+export default class QuestionView extends Component {
   render() {
     return (
       <div>
         <Description />
-        <List />
+        <QuestionList questions={data.questions}/>
       </div>
     )
   }
