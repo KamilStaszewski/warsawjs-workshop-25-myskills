@@ -1,5 +1,5 @@
 import React from 'react';
-import Textquestion from './textquestion'
+import Textquestion from './textquestion';
 
 const Questions = ({...rest}) => {
   return (
